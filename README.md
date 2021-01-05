@@ -1,2 +1,2 @@
-# sanialarm-app-android
-Codebase for the android app
+# Sanialarm
+Dieses Repository stellt die
