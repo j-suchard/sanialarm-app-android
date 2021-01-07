@@ -1,6 +1,11 @@
-package de.cvd.gs.sanialarm.ui.login.data;
+package de.cvd.gs.sanialarm.ui.login;
 
-public class LoginFormState {
+import androidx.annotation.Nullable;
+
+/**
+ * Data validation state of the login form.
+ */
+class LoginFormState {
     @Nullable
     private Integer usernameError;
     @Nullable

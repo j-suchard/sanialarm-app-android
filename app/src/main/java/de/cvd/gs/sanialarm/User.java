@@ -4,12 +4,14 @@ import java.util.Collection;
 import java.util.Locale;
 
 public class User {
-    private final String accountID;
-    private final String givenName;
-    private final String surname;
-    private final AccountType[] accountType;
+    private String accountID;
+    private String givenName;
+    private String surname;
+    private AccountType[] accountType;
     protected int internalID;
     private String emailAddress;
+    private int responderLevel;
+    private boolean validAccount = false;
 
     /**
      * Initializer for the User to store the logged in user.<br>
@@ -38,11 +40,15 @@ public class User {
         this.accountType = (AccountType[]) accountType.toArray();
     }
 
+    public User() {
+
+    }
+
     /**
      * Get the users Account Type
      * @return {@link AccountType Type of Account}
      */
-    public AccountType[] getAccountType() {
+    public AccountType[] getAccountTypes() {
         return accountType;
     }
 
@@ -102,8 +108,53 @@ public class User {
         return String.format(Locale.getDefault(), "%s %s", givenName, surname);
     }
 
+    public void setInternalID(int internalID) {
+        this.internalID = internalID;
+    }
+
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
+    }
+
+    public void setAccountType(AccountType[] accountType) {
+        this.accountType = accountType;
+    }
+
+    public void setGivenName(String givenName) {
+        this.givenName = givenName;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     public boolean changeEmailAddress(String newEmailAddress) {
         //TODO: Code change of email address and verification
         throw new NoSuchMethodError();
+    }
+
+    public int getResponderLevel() {
+        return responderLevel;
+    }
+
+    public void setResponderLevel(int responderLevel) {
+        this.responderLevel = responderLevel;
+    }
+
+    public boolean isValidAccount() {
+        return validAccount;
+    }
+
+    public void setValidAccount(boolean loginTried) {
+        this.validAccount = loginTried;
+    }
+
+    public boolean isResponder() {
+        for (AccountType accountType : getAccountTypes()) {
+            if (accountType == AccountType.RESPONDER) {
+                return true;
+            }
+        }
+        return false;
     }
 }
